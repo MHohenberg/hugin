@@ -1,0 +1,9 @@
+{
+    "domainlist": [
+	{ "domain" : "somedomain.net",
+	  "ip"	   : "1.2.3.4"
+	},
+	{ "domain" : "anotherdomain.com",
+      	  "ip"     : "128.128.138.159"
+        }]
+}
