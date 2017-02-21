@@ -2,7 +2,6 @@ var listDomains = [];
 $('#alert_malicious').hide();
 $('#warning_dns').hide();
 
-
 function populateTable() {
     $.getJSON('domainlist.json', function (data) {
 	listDomains = [];
@@ -22,6 +21,7 @@ function queryDNSLookup() {
 		if ($("td[id='"+data.domain+"_ip']").text() == data.ip) {
                    $("td[id='"+data.domain+"_ip']").html(data.ip+'<span class="label label-success">OK</span>');
 		} else {
+		   $('#warning_dns').show();
                    var oldIP = $("td[id='"+data.domain+"_ip']").text();
                    $("td[id='"+data.domain+"_ip']").html(oldIP+'<span class="label label-warning">'+data.ip+'</span>');
                 }
