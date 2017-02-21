@@ -4,7 +4,6 @@ $('#warning_dns').hide();
 
 
 function populateTable() {
-
     $.getJSON('domainlist.json', function (data) {
 	listDomains = [];
 	for (var i = 0; i < data.domainlist.length; i++) {
@@ -12,18 +11,33 @@ function populateTable() {
             listDomains.push(data.domainlist[i].domain);
 	}
 	querySafeBrowsingAPI();
+	queryDNSLookup();
     });
 }
 
-function querySafeBrowsingAPI() {
+function queryDNSLookup() {
+    for (var i = 0; i < listDomains.length; i++) {
+        $.getJSON('dnslookup.php?q='+listDomains[i], function (data) {
+	    if (data.status == "OK") {
+		if ($("td[id='"+data.domain+"_ip']").text() == data.ip) {
+                   $("td[id='"+data.domain+"_ip']").html(data.ip+'<span class="label label-success">OK</span>');
+		} else {
+                   var oldIP = $("td[id='"+data.domain+"_ip']").text();
+                   $("td[id='"+data.domain+"_ip']").html(oldIP+'<span class="label label-warning">'+data.ip+'</span>');
+                }
+            }
+	});
+    }
+}
 
+function querySafeBrowsingAPI() {
     $.getJSON('config.json', function (data) {
         var apikey = data.apikey;
-
+	
 	var obj = new Object();
         obj.client = new Object();
         obj.client.clientId = "hugin";
-        obj.client.clientVersion = "0.0.1";
+        obj.client.clientVersion = "0.1.9";
 	obj.threatInfo = new Object();
 	obj.threatInfo.threatTypes = ["MALWARE", "SOCIAL_ENGINEERING"];
         obj.threatInfo.platformTypes = ["WINDOWS"];

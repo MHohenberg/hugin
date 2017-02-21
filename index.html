@@ -9,7 +9,7 @@
     <meta name="author" content="">
     <link rel="icon" href="../../favicon.ico">
 
-    <title>Theme Template for Bootstrap</title>
+    <title>hugin</title>
 
   <!-- Latest compiled and minified CSS -->
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
@@ -59,29 +59,25 @@
       </div>
 
       <div class="row">
-        <div class="col-md-6">
           <button type="button" class="btn btn-xs btn-primary" onClick="populateTable()">Reload</button>
           <button type="button" class="btn btn-xs btn-danger" onClick="querySafeBrowsingAPI()">Query Safe Web API</button>
 
-          <table class="table" id="domainTable">
+          <table class="table" id="domainTable" style="width:100%">
             <thead>
               <tr>
-                <th>domain name</th>
-                <th>DNS</th>
-                <th>Google Safe API Status</th>
+                <th>Domain Name</th>
+                <th>DNS / IP</th>
+                <th>Google Safe Browsing API Status</th>
               </tr>
             </thead>
             <tbody>
 	    </tbody>
           </table>
-        </div>
       </div>
         
       <a label="about"></a>
-      <div class="page-header">
-        <h1>About hugin</h1>
-      </div>
       <div class="well">
+	<h1>About hugin</h1>
         <p>Hugin is an open-source domain surveillance tool intended as a dashboard for webmasters. You can find the code at <a href='https://github.com/MHohenberg/hugin'>github</a>.</p>
       </div>
     </div> <!-- /container -->
