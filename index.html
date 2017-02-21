@@ -49,28 +49,19 @@
       </div>
     </nav>
 
-    <div class="container theme-showcase" role="main">
+    <div class="container theme-showcase" role="main" style="margin-top:75px">
 
-      <!-- Main jumbotron for a primary marketing message or call to action -->
-      <div class="jumbotron">
-        <h1>... at night, they report to him.</h1>
-        <p>
-          Hugin is a surveillance dashboard for webmasters. Given a list of domain names, this does a DNS lookup and checks wether 
-          the site is marked as "Malicious" by Google's safe browsing API.
-        </p>
-      </div>
-
-      <div class="alert alert-warning" role="alert">
+      <div class="alert alert-danger" role="alert" id='alert_malicious'>
         <strong>Alert!</strong> Domains have been reported as malicious!
       </div>
-      <div class="alert alert-danger" role="alert">
+      <div class="alert alert-danger" role="alert" id='warning_dns'>
         <strong>Warning!</strong> There is no DNS report for some of your domains!
       </div>
 
       <div class="row">
         <div class="col-md-6">
-          <button type="button" class="btn btn-lg btn-primary" onClick="populateTable()">Reload</button>
-          <button type="button" class="btn btn-lg btn-danger" onClick="querySafeBrowsingAPI()">Query Safe Web API</button>
+          <button type="button" class="btn btn-xs btn-primary" onClick="populateTable()">Reload</button>
+          <button type="button" class="btn btn-xs btn-danger" onClick="querySafeBrowsingAPI()">Query Safe Web API</button>
 
           <table class="table" id="domainTable">
             <thead>
